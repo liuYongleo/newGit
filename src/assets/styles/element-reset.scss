@@ -1,0 +1,309 @@
+/* element css reset*/
+
+body {
+    // dialog
+    .dy-dialog {
+        &.el-dialog__wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .el-dialog {
+            width: 12.66rem;
+        }
+
+        .el-dialog__header {
+            height: 0.7rem;
+            background-color: $colorActive;
+            padding: 0.2rem 0.2rem 0.1rem;
+
+            .el-dialog__title {
+                color: #fff;
+                font-size: 0.26rem;
+                line-height: 0.24rem;
+            }
+
+            .el-dialog__headerbtn {
+                font-size: 0.3rem;
+
+                .el-dialog__close {
+                    color: #fff;
+                }
+            }
+
+            .el-dialog__headerbtn {
+                top: 0.2rem;
+                right: 0.2rem;
+            }
+        }
+    }
+
+    // check框
+    .dy-check.el-checkbox {
+        margin-right: 0;
+        .el-checkbox__inner {
+            width: 0.25rem;
+            height: 0.25rem;
+            border-color: #ababab;
+        }
+
+        .el-checkbox__input.is-checked .el-checkbox__inner,
+        .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+            border-color: $colorActive;
+            background-color: transparent;
+
+            &::after {
+                top: 0;
+                left: 0.06rem;
+                width: 0.08rem;
+                height: 0.15rem;
+                border-width: 0.03rem;
+                border-color: $colorActive;
+            }
+        }
+    }
+
+    // el-textarea
+    .el-textarea {
+        textarea.el-textarea__inner {
+            font-size: 0.26rem;
+            color: inherit;
+            font-family: $fontFamily;
+            word-break: break-all;
+            border: 1px solid #d0d0d0;
+            background-color: inherit;
+            border-radius: 0;
+        }
+
+        &.is-disabled {
+            pointer-events: none;
+        }
+    }
+
+    // el-radio
+    .el-radio__label {
+        padding-left: 0.3rem;
+    }
+
+    .el-radio__input {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(0, -45%);
+    }
+
+    .el-radio__label,
+    .el-radio__input.is-checked + .el-radio__label {
+        font-size: $fontL;
+        color: #666666;
+    }
+
+    .el-radio__input .el-radio__inner {
+        height: 0.16rem;
+        width: 0.16rem;
+        border: solid 1px #a5a5a5;
+    }
+
+    .el-radio__inner::after {
+        width: 0.08rem;
+        height: 0.08rem;
+    }
+
+    .el-radio__input.is-checked .el-radio__inner {
+        background-color: #fff;
+        border: solid 1px $green;
+    }
+
+    .el-radio__input.is-checked .el-radio__inner::after {
+        background-color: $green;
+    }
+
+    // el-input default style
+    .default.el-input {
+        font-size: inherit;
+        width: 2.62rem;
+
+        .el-input__inner {
+            height: 0.52rem;
+            padding-left: 0.15rem;
+            padding-right: 0.15rem;
+            line-height: 0.52rem;
+            color: #666;
+            border-color: #c0c0c0;
+            background-color: inherit;
+            border-radius: 0;
+            &:focus {
+                border-color: $green!important;
+            }
+        }
+    }
+
+    // switch
+    .project-switch.el-switch {
+        .el-switch__core {
+            height: 0.4rem;
+            border-radius: 0.2rem;
+
+            &::after {
+                width: 0.38rem;
+                height: 0.38rem;
+                top: -0.01rem;
+                left: 0;
+            }
+        }
+
+        &.is-checked .el-switch__core::after {
+            left: 0.85 - 0.25rem;
+            margin-left: -0.17rem;
+        }
+
+        .el-switch__label--left,
+        .el-switch__label--right {
+            display: none;
+            transition: none;
+            width: 0.4rem;
+            height: 0.4rem;
+            line-height: 0.4rem;
+            text-align: center;
+            margin: 0;
+
+            span {
+                font-size: 0.2rem;
+                line-height: 0.4rem;
+            }
+        }
+
+        .el-switch__label--left {
+            &.is-active {
+                display: block;
+                position: absolute;
+                color: #d8d8d8;
+                z-index: 1;
+            }
+        }
+
+        .el-switch__label--right {
+            &.is-active {
+                display: block;
+                position: absolute;
+                right: 0;
+                color: $colorActive;
+                z-index: 1;
+            }
+        }
+    }
+
+    // modal遮罩层
+    .v-modal {
+        background-color: #343434;
+    }
+
+    .main {
+        // 招投标清单、招标文件表格样式（重置element）
+        // 在页面最外层加ztb-list-main class
+        &.ztb-list-main {
+            .el-table td,
+            .el-table th {
+                padding: 0.12rem 0;
+            }
+
+            // 更改默认表格样式
+            .el-table thead {
+                font-weight: 700;
+            }
+
+            .el-table .cell,
+            .el-table div {
+                font-size: 0.14rem;
+                color: #333;
+                line-height: 0.23rem;
+                padding: 0;
+                text-align: center;
+            }
+
+            .el-table--border td,
+            .el-table--border th,
+            .el-table__body-wrapper .el-table--border.is-scrolling-left ~ .el-table__fixed {
+                border-color: #ccc;
+            }
+
+            .el-table .el-table__header th,
+            .el-table .el-table__header tr {
+                background: linear-gradient(180deg, #f9f9f9 0, #efefef);
+            }
+        }
+    }
+
+    // 消息提示框
+    .dy-msg-box {
+        border: none;
+        width: 5rem;
+        box-shadow: none;
+        padding-bottom: 0;
+
+        .el-message-box__header {
+            padding: 0.2rem 0.2rem 0.1rem;
+            background-color: $colorActive;
+
+            .el-message-box__title {
+                font-size: $fontM;
+                color: #fff;
+            }
+        }
+
+        .el-message-box__message p {
+            line-height: 0.3rem;
+            color: #333;
+        }
+
+        .el-message-box__content {
+            font-size: $fontL;
+            padding: 0.2rem;
+        }
+
+        .el-message-box__btns {
+            padding: 0;
+
+            .el-button--small,
+            .el-button--small.is-round {
+                font-size: $fontM;
+                padding: 0.11rem 0.16rem;
+                border-radius: 0.03rem;
+                margin-bottom: 0.1rem;
+            }
+
+            button:last-child {
+                margin: 0 .1rem .2rem .2rem;
+            }
+
+            .el-button:active,
+            .el-button:focus,
+            .el-button:hover {
+                color: inherit;
+                border-color: inherit;
+            }
+            .el-button--success {
+                background-color: $colorActive;
+                border-color: $colorActive;
+                color: #fff;
+            }
+            .el-button--success.is-active,
+            .el-button--success:active,
+            .el-button--success:focus,
+            .el-button--success:hover {
+                color: #fff;
+                background-color: $colorActive;
+                border-color: $colorActive;
+            }
+        }
+
+        .el-message-box__headerbtn {
+            top: 0.15rem;
+            right: 0.15rem;
+
+            .el-message-box__close {
+                color: #fff;
+            }
+        }
+    }
+}

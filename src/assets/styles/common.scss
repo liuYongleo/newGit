@@ -1,0 +1,518 @@
+@charset "utf-8";
+
+/*--项目公共样式--*/
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    overflow: hidden;
+}
+
+body {
+    font-family: $fontFamily;
+    color: $fontColor;
+    font-size: $fontL;
+    background: #fff;
+}
+
+// 默认button
+.confirm-btn {
+    @include confirm-btn;
+}
+
+// 中空button
+.hollow-btn {
+    @include hollow-btn;
+
+    &.active {
+        @include confirm-btn;
+    }
+}
+
+// 灰色button
+.gray-btn {
+    @include gray-btn;
+}
+
+// button激活
+.btn-active {
+    @include btn-active;
+}
+
+// btn:active
+.btn-click-active {
+    &:active {
+        @include btn-active;
+    }
+}
+
+.text-success {
+    color: $colorActive;
+}
+
+.text-danger {
+    color: $red;
+}
+
+// 搜索button
+.search-btn {
+    @include search-btn;
+}
+
+// 评审模态框title
+.review-modal-title {
+    .title-icon-wrap {
+        padding-top: 0.05rem;
+        padding-left: 0.1rem;
+
+        i {
+            font-size: $fontL;
+        }
+    }
+}
+
+// 步骤导航
+.step-nav {
+    $stepArrowWidth: 0.25rem; // 箭头宽度
+    $stepWidth: 0.7rem;
+    text-align: center;
+    $stepBg: #d4d4d4;
+    $stepActiveBg: $green;
+
+    .step-item {
+        position: relative;
+        display: inline-block;
+        width: 3.2rem;
+        padding-left: $stepArrowWidth;
+        padding-right: $stepArrowWidth;
+        height: $stepWidth;
+
+        color: #fff;
+        background-color: $stepBg;
+
+        &:before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            width: $stepArrowWidth;
+            top: 0;
+            bottom: 0;
+            border-top: solid $stepBg 0.35rem;
+            border-bottom: solid $stepBg 0.35rem;
+            border-left: solid #fff $stepArrowWidth;
+            border-right: none;
+        }
+
+        &:after {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            right: -$stepArrowWidth;
+            width: $stepArrowWidth;
+            top: 0;
+            bottom: 0;
+            border-top: solid #fff 0.35rem;
+            border-bottom: solid #fff 0.35rem;
+            border-left: solid $stepBg $stepArrowWidth;
+            border-right: solid #ff0000 0;
+        }
+
+        .item-inner-wrap {
+            span,
+            p {
+                display: inline-block;
+                font-size: $fontXL;
+                vertical-align: middle;
+                height: $stepWidth;
+                line-height: $stepWidth;
+            }
+
+            span {
+                font-size: 0.38rem;
+                padding-left: 0.05rem;
+                padding-right: 0.25rem;
+            }
+        }
+
+        &:first-child {
+            text-align: left;
+            padding-left: 0.3rem;
+
+            &:before {
+                display: none;
+            }
+        }
+
+        &.active {
+            background-color: $stepActiveBg;
+
+            &:before {
+                border-top-color: $stepActiveBg;
+                border-bottom-color: $stepActiveBg;
+                border-left-color: #fff;
+            }
+
+            &:after {
+                border-top-color: #fff;
+                border-bottom-color: #fff;
+                border-left-color: $stepActiveBg;
+            }
+        }
+    }
+}
+
+.hc-table {
+    text-align: center;
+    background-color: #f7f7f7;
+
+    .table-header {
+        padding: 0.18rem 0;
+        font-size: 0.26rem;
+        //color: #fff;
+        //background-color: $green;
+        color: #666;
+        background-color: #f2f2f2;
+    }
+
+    .content-row {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        height: 0.8rem;
+        font-size: $fontL;
+        color: #666;
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 0.16rem;
+            right: 0.16rem;
+            height: 1px;
+            background-color: #e7e7e7;
+            bottom: 0;
+        }
+
+        &:last-child:after {
+            display: none;
+        }
+    }
+}
+
+.hs-table {
+    .table-header-wrap {
+        font-size: $fontL;
+
+        .table-header {
+            padding: 0.15rem 0.17rem;
+
+            color: #666;
+            background-color: #f2f2f2;
+        }
+    }
+
+    .table-content-wrap {
+        padding: 0.12rem 0.18rem 0 0.18rem;
+        color: #666;
+
+        .content-row {
+            display: flex;
+            align-items: center;
+            height: 0.68rem;
+
+            .el-col {
+                display: flex;
+                align-items: center;
+            }
+
+            input {
+                width: 0.8rem;
+                height: 0.4rem;
+                border: solid 1px #999;
+                font-size: $fontL;
+                color: #666;
+                text-align: center;
+            }
+        }
+
+        .text-overflow {
+            height: 0.24rem;
+        }
+    }
+}
+
+.home {
+    .main {
+        overflow: auto;
+
+        h3 {
+            padding: 0.24rem 0.3rem;
+            font-size: 0.26rem;
+            border-bottom: solid 1px #dcdcdc;
+        }
+
+        h4 {
+            margin: 0.2rem 0.3rem;
+            font-size: 0.26rem;
+        }
+
+        .content-box {
+            margin: 0.2rem 0.24rem;
+        }
+    }
+
+    // 流程栏、菜单栏关闭按钮
+    .side-bar-close-icon {
+        position: absolute;
+        top: 0.1rem;
+
+        &.left {
+            right: 0.1rem;
+        }
+
+        &.right {
+            left: 0.1rem;
+        }
+    }
+
+    // 编辑评标澄清、查看评标澄清
+    .review-clarify {
+        .small-input {
+            width: 1.02rem;
+            margin-right: 0.2rem;
+        }
+
+        .part-wrap {
+            display: flex;
+            // 搜索工具栏
+            .search-tool {
+                display: flex;
+                justify-content: space-between;
+
+                .filed-item {
+                    display: flex;
+                    align-items: center;
+                    font-size: 0.26rem;
+
+                    label {
+                        padding-right: 0.15rem;
+                    }
+
+                    .filed-item-content {
+                    }
+
+                    .search-btn {
+                        margin-top: 1px;
+                    }
+                }
+            }
+
+            .left-part {
+                width: 56%;
+                padding-right: 0.2rem;
+            }
+
+            .right-part {
+                width: 44%;
+                padding: 0 0.2rem;
+                background-color: #f6f6f6;
+            }
+
+            .left-part,
+            .right-part {
+                .part-title {
+                    margin-top: 0.2rem;
+                    margin-bottom: 0.2rem;
+                }
+
+                .part-content {
+                    margin-top: 0.2rem;
+                    margin-bottom: 0.2rem;
+                }
+            }
+        }
+    }
+
+    // 定性、定量评审弹出框样式
+    .qxx-review-modal {
+        .content-title {
+            padding: 0.05rem 0 0.2rem 0;
+        }
+
+        .title-box {
+            height: 0.7rem;
+            line-height: 0.7rem;
+            font-size: 0.26rem;
+            text-align: center;
+            color: $green;
+            background-color: #f2f2f2;
+        }
+
+        .content-sub-title {
+            padding: 0.2rem 0;
+            color: #666;
+        }
+
+        .introduce {
+            padding: 0.22rem 0.13rem 0.22rem 0;
+            font-size: 0.26rem;
+            color: #999;
+            background-color: #f2f2f2;
+            line-height: 0.35rem;
+
+            .introduce-param {
+                color: $colorActive;
+            }
+            .introduce-score {
+                color: $red;
+                font-size: $fontM;
+            }
+            .introduce-unit {
+                color: #999;
+            }
+        }
+
+        .introduce-row {
+            display: flex;
+            margin-bottom: 0.1rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            .introduce-title {
+                color: #333;
+                text-align: center;
+                width: 1.33rem;
+            }
+            .introduce-value {
+                flex: 1;
+            }
+            .introduce-standard {
+                max-height: 4.09rem;
+                overflow-y: auto;
+            }
+        }
+
+        .table-content-wrap {
+            max-height: 3.4rem;
+            overflow-y: auto;
+            background-color: #f2f2f2;
+            font-size: 0.24rem;
+            margin-top: 0.2rem;
+
+            .content-row {
+                height: 0.6rem;
+            }
+        }
+
+        .content-bottom {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 0.2rem;
+            text-align: right;
+
+            .mr {
+                margin-right: 0.3rem;
+            }
+
+            .content-bottom-inner {
+                flex: 1;
+                display: flex;
+                justify-content: space-between;
+
+                &.flex-end {
+                    justify-content: flex-end;
+                }
+            }
+        }
+
+        .qualify-btn {
+            @include gray-btn;
+            padding-left: 0.18rem;
+            padding-right: 0.18rem;
+            height: 0.4rem;
+            font-size: $fontM;
+
+            &:first-child {
+                margin-right: 0.15rem;
+            }
+
+            &.active {
+                background-color: $colorActive;
+                border-color: $colorActive;
+                color: #fff;
+            }
+        }
+
+        .qualify-btn-wrap {
+            display: inline-block;
+        }
+
+        // 异步内容
+        .async-cont {
+            .comp-wrap {
+                background-color: #f2f2f2;
+                padding: 0.17rem 0.1rem;
+                display: flex;
+
+                .comp-btn {
+                    width: 1.2rem;
+                    padding: 0;
+                    font-size: 0.24rem;
+                    height: 0.46rem;
+                }
+
+                .comp-name {
+                    // width: 3.3rem;
+                    flex: 1;
+                    margin: 0 0.14rem;
+                    line-height: 0.46rem;
+                    font-size: 0.26rem;
+                }
+            }
+
+            .async-introduce {
+                overflow-y: auto;
+                margin-top: 0.2rem;
+                max-height: 7.95rem;
+            }
+
+            .introduce {
+                position: relative;
+                border-bottom: 1px dashed #ccc;
+
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+
+            .content-bottom {
+                display: block;
+                text-align: center;
+            }
+
+            .review-params-wrap {
+                display: flex;
+
+                .review-params-left {
+                    flex: 1;
+                }
+
+                .review-btn {
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    width: 4.75rem;
+                }
+            }
+        }
+
+        .flex-end {
+            justify-content: flex-end;
+        }
+    }
+}
